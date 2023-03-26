@@ -17,18 +17,18 @@ def getAccessFromStroj(connection_details):
         uplink = Uplink()
         # access request using APIKEY, SATELLITEADDRESS, and PASS-PHARSE
         print("\nRequesting access....")
-        strojAccess = uplink.request_access_with_passphrase(satelliteAddress, apiKey, passPhrase)
+        storjAccess = uplink.request_access_with_passphrase(satelliteAddress, apiKey, passPhrase)
         print("Established connection to Stroj Network using Uplink library")
     except StorjException as exception:
         print("\nConnection failed")
         print("Exception Caught: ", exception.details)
-    return strojAccess
+    return storjAccess
 
 
-def getProjectDetails(connection_details, strojAccess):
+def getProjectDetails(connection_details, storjAccess):
     try:
         # Open project using Stroj Access
-        projectObject = strojAccess.open_project()
+        projectObject = storjAccess.open_project()
         print("Project is opened and details of bucket are retrieved...")
         bucketName = connection_details['BUCKETNAME']
         bucketDetails = projectObject.stat_bucket(bucketName)
@@ -92,7 +92,7 @@ def downloadFile(fileObjectLinkList):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     connection_details = {}
-    with open("StrojConnectionDetails") as env:
+    with open("StorjConnectionDetails") as env:
         for line in env:
             key, val = line.split()
             connection_details[key] = val
