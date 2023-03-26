@@ -1,4 +1,3 @@
-from uplink_python.uplink import Uplink
 from uplink_python.module_classes import DownloadOptions, Permission, ListObjectsOptions
 from uplink_python.errors import InternalError, BucketNotFoundError, StorjException, BucketNotEmptyError
 from uplink_python.uplink import *
